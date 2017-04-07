@@ -1,0 +1,1 @@
+## Recursive olarak girilen bir cumledeki harf , hece ve kelime sayisini hesaplayan program 
