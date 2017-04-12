@@ -7,7 +7,7 @@ public class Main {
 		int counter = 0;
 		
 		for (int i = 0; i < cumle.length(); i++) {
-			if(cumle.charAt(i) != ' '){
+			if(cumle.charAt(i) != ' ' && cumle.charAt(i) != '.' && cumle.charAt(i) != ','){
 				counter++;
 			}
 		}
@@ -29,11 +29,11 @@ public class Main {
 	public static int kelimeHesapla(String cumle){
 		int counter = 0;
 		for (int i = 0; i < cumle.length(); i++) {
-			if(cumle.charAt(i)==' '){
+			if(cumle.charAt(i)==' ' && cumle.charAt(i+1) != ' ' && cumle.charAt(i+2) != ' '){
 				counter++;
 			}
 		}
-		return counter+1;
+		return (counter+1);
 	}
 	
 	/*Integer verilen degerin String karsiligini donduren fonksiyon.*/
@@ -87,15 +87,15 @@ public class Main {
 			{
 				switch(dizi[sayac])
 				{
-				case 1: cumle += "on"; break;
-				case 2: cumle += "yirmi"; break;
-				case 3: cumle += "otuz"; break;
-				case 4: cumle += "kirk"; break;
-				case 5: cumle += "elli"; break;
-				case 6: cumle += "altmis"; break;
-				case 7: cumle += "yetmis"; break;
-				case 8: cumle += "seksen"; break;
-				case 9: cumle += "doksan"; break;
+				case 1: cumle += "on "; break;
+				case 2: cumle += "yirmi "; break;
+				case 3: cumle += "otuz "; break;
+				case 4: cumle += "kirk "; break;
+				case 5: cumle += "elli "; break;
+				case 6: cumle += "altmis "; break;
+				case 7: cumle += "yetmis "; break;
+				case 8: cumle += "seksen "; break;
+				case 9: cumle += "doksan "; break;
 				}
 			}
 			if(sayac == 2)
@@ -118,10 +118,15 @@ public class Main {
 		return cumle;
 	}
 	
-	/*x,w,q degerlerinin degistirilip degistirilmedigini tutan degiskenler*/
+	/*Girilen cumlede X,Y,Z nin olup olmadigini tutan degiskenler.*/
+	public static boolean xVar = false;
+	public static boolean yVar = false;
+	public static boolean zVar = false;
+	
+	/*x,y,z degerlerinin degistirilip degistirilmedigini tutan degiskenler*/
 	public static boolean xB = false;
-	public static boolean wB = false;
-	public static boolean qB = false;
+	public static boolean yB = false;
+	public static boolean zB = false;
 	
 	/*harf,hece,kelime degerlerinin eski degerlerini tutan degiskenler*/
 	public static String oldHarfSayisi = new String(); 
@@ -130,20 +135,20 @@ public class Main {
 	
 	/*Harf sayisini yazi olarak guncelleme yapan fonksiyon*/
 	public static void harfHesaplaFonk(){
-		if(xB==false) //x degeri bulunmusmu ve degistirilmismi diye kontrol ediliyor.
+		if(zB==false) //Z degeri bulunmusmu ve degistirilmismi diye kontrol ediliyor.
 		{
 			int harfSayisi = harfHesapla(cumle);
 			String deger = kelimeyeCevir(harfSayisi);
-			cumle = cumle.replace("x", deger);
+			cumle = cumle.replaceFirst("Z", deger);
 			oldHarfSayisi = deger;
-			xB = true;
+			zB = true;
 			System.out.println(cumle);
 			return;
 		}
-		else if(xB == true)
+		else if(zB == true)
 		{
 			int harfSayisi = harfHesapla(cumle);
-			cumle = cumle.replace(oldHarfSayisi, kelimeyeCevir(harfSayisi));
+			cumle = cumle.replaceFirst(oldHarfSayisi, kelimeyeCevir(harfSayisi));
 			oldHarfSayisi = kelimeyeCevir(harfSayisi);
 			System.out.println(cumle);
 			return;
@@ -152,20 +157,20 @@ public class Main {
 	
 	/*Hece sayisini yazi olarak guncelleme yapan fonksiyon*/
 	public static void heceHesaplaFonk(){
-		if(wB==false) //w degeri bulunmusmu ve degistirilmismi diye kontrol ediliyor.
+		if(yB==false) //Y degeri bulunmusmu ve degistirilmismi diye kontrol ediliyor.
 		{
 			int heceSayisi = heceHesapla(cumle);
 			String deger = kelimeyeCevir(heceSayisi);
-			cumle = cumle.replace("w", deger);
+			cumle = cumle.replaceFirst("Y", deger);
 			oldHeceSayisi = deger;
-			wB = true;
+			yB = true;
 			System.out.println(cumle);
 			return;
 		}
-		else if(wB == true)
+		else if(yB == true)
 		{
 			int heceSayisi = heceHesapla(cumle);
-			cumle = cumle.replace(oldHeceSayisi, kelimeyeCevir(heceSayisi));
+			cumle = cumle.replaceFirst(oldHeceSayisi, kelimeyeCevir(heceSayisi));
 			oldHeceSayisi = kelimeyeCevir(heceSayisi);
 			System.out.println(cumle);
 			return;
@@ -174,91 +179,124 @@ public class Main {
 	
 	/*Kelime sayisini yazi olarak guncelleme yapan fonksiyon*/
 	public static void kelimeHesaplaFonk(){
-		if(qB==false) //q degeri bulunmusmu ve degistirilmismi diye kontrol ediliyor.
+		if(xB==false) //X degeri bulunmusmu ve degistirilmismi diye kontrol ediliyor.
 		{
 			int kelimeSayisi = kelimeHesapla(cumle);
 			String deger = kelimeyeCevir(kelimeSayisi);
-			cumle = cumle.replace("q", deger);
+			cumle = cumle.replaceFirst("X", deger);
 			oldKelimeSayisi = deger;
-			qB = true;
+			xB = true;
 			System.out.println(cumle);
 			return;
 		}
-		else if(qB == true)
+		else if(xB == true)
 		{
 			int kelimeSayisi = kelimeHesapla(cumle);
-			cumle = cumle.replace(oldKelimeSayisi, kelimeyeCevir(kelimeSayisi));
+			cumle = cumle.replaceFirst(oldKelimeSayisi, kelimeyeCevir(kelimeSayisi));
 			oldKelimeSayisi = kelimeyeCevir(kelimeSayisi);
 			System.out.println(cumle);
 			return;
 		}
 	}
 	
-	/*Islemlerin yapildigi ana fonksiyon.(harften kelimeye dogru)*/
-	public static void islemYap(){
-		while(!oldKelimeSayisi.equals(kelimeyeCevir(kelimeHesapla(cumle))))
-		{
-			while (!oldHeceSayisi.equals(kelimeyeCevir(heceHesapla(cumle)))) 
-			{
-					while(!oldHarfSayisi.equals(kelimeyeCevir(harfHesapla(cumle))))
-					{
-						if(oldHarfSayisi.equals(kelimeyeCevir(harfHesapla(cumle)))){
-							break;
-						}
-						else{
-							harfHesaplaFonk();
-							islemYap();
-						}
-					}
-					if(oldHeceSayisi.equals(kelimeyeCevir(heceHesapla(cumle)))){
-						break;
-					}else{
-						heceHesaplaFonk();
-						islemYap();
-				  }		
-			  }
-			if(oldKelimeSayisi.equals(kelimeyeCevir(kelimeHesapla(cumle)))){
-				break;
-			}else{
-				kelimeHesaplaFonk();
-				islemYap();
-			}
-	    }
+	/*Girilenc cumlede X,Y,Z olup olmadigini bulan fonksiyon.*/
+	public static void tara(){
+		for (int i = 0; i < cumle.length(); i++) {
+			if(cumle.charAt(i) == 'X') xVar = true;
+			else if(cumle.charAt(i) == 'Y') yVar = true;
+			else if (cumle.charAt(i) == 'Z') zVar = true;
+		}
 	}
+	
 	
 	/*Kelimeden harf'e dogru islemlerin yapildigi fonksiyon*/
-	public static void islemYap2(){
-		while(!oldHarfSayisi.equals(kelimeyeCevir(harfHesapla(cumle))))
-		{
-			while (!oldHeceSayisi.equals(kelimeyeCevir(heceHesapla(cumle)))) 
-			{
-					while(!oldKelimeSayisi.equals(kelimeyeCevir(kelimeHesapla(cumle))))
-					{
-						if(oldKelimeSayisi.equals(kelimeyeCevir(kelimeHesapla(cumle)))){
-							break;
-						}
-						else{
-							kelimeHesaplaFonk();
-							islemYap2();
-						}
-					}
-					if(oldHeceSayisi.equals(kelimeyeCevir(heceHesapla(cumle)))){
-						break;
-					}else{
-						heceHesaplaFonk();
-						islemYap2();
-				  }		
-			  }
-			if(oldHarfSayisi.equals(kelimeyeCevir(harfHesapla(cumle)))){
-				break;
-			}else{
-				harfHesaplaFonk();
-				islemYap2();
-			}
-	    }
+	public static void islemYap(){
+		tara();
+		System.out.println(cumle);
+		if(xVar == true && yVar == true && zVar == true) XYZ();
+		else if(xVar == true && yVar == true) XY();
+		else if(xVar == true && zVar == true) XZ();
+		else if(yVar == true && zVar == true) YZ();
+		else if(xVar == true) X();
+		else if(yVar == true) Y();
+		else if(zVar == true) Z();
 	}
 	
-	public static String sabit = new String(" Cumlesinde x tane harf w tane hece q tane kelime vardir.");
+	/*Sadece kelime varsa islem yapacak fonksyion*/
+	public static void X(){
+		while(!oldKelimeSayisi.equals(kelimeyeCevir(kelimeHesapla(cumle))))
+		{
+			kelimeHesaplaFonk();
+			X();
+		}
+	}
+	
+	/*Sadece hece varsa islem yapacak fonksyion*/
+	public static void Y(){
+		while(!oldHeceSayisi.equals(kelimeyeCevir(heceHesapla(cumle))))
+		{
+			heceHesaplaFonk();
+			Y();
+		}
+	}
+	
+	/*Sadece harf varsa islem yapacak fonksiyon*/
+	public static void Z(){
+		while(!oldHarfSayisi.equals(kelimeyeCevir(harfHesapla(cumle))))
+		{
+			harfHesaplaFonk();
+			Z();
+		}
+	}
+	
+	
+	public static void XY()
+	{
+		while(!oldKelimeSayisi.equals(kelimeyeCevir(kelimeHesapla(cumle))) && !oldHeceSayisi.equals(kelimeyeCevir(heceHesapla(cumle))))
+		{
+			kelimeHesaplaFonk();
+			XY();
+			heceHesaplaFonk();
+			XY();
+		}
+	}
+	
+	public static void XZ()
+	{
+		while(!oldKelimeSayisi.equals(kelimeyeCevir(kelimeHesapla(cumle))) && !oldHarfSayisi.equals(kelimeyeCevir(harfHesapla(cumle))))
+		{
+			kelimeHesaplaFonk();
+			XZ();
+			harfHesaplaFonk();
+			XZ();
+		}
+	}
+	
+	public static void YZ()
+	{
+		while(!oldHeceSayisi.equals(kelimeyeCevir(heceHesapla(cumle))) && !oldHarfSayisi.equals(kelimeyeCevir(harfHesapla(cumle))))
+		{
+			heceHesaplaFonk();
+			YZ();
+			harfHesaplaFonk();
+			YZ();
+		}
+	}
+	
+	
+	public static void XYZ()
+	{
+		while(!oldKelimeSayisi.equals(kelimeyeCevir(kelimeHesapla(cumle))) && !oldHeceSayisi.equals(kelimeyeCevir(heceHesapla(cumle))) &&!oldHarfSayisi.equals(kelimeyeCevir(harfHesapla(cumle))))
+		{
+			kelimeHesaplaFonk();
+			XYZ();
+			heceHesaplaFonk();
+			XYZ();
+			harfHesaplaFonk();
+			XYZ();
+		}
+	}
+	
 	public static String cumle = new String();
 
 	public static void main(String[] args) {
@@ -266,9 +304,8 @@ public class Main {
 
 		System.out.print("Bir cumle giriniz : ");
 		cumle = scan.nextLine();
-		cumle = cumle + sabit;
-
-		islemYap2();
+		
+		islemYap(); //Kelimeden harfe dogru sirada hesaplama yapan fonksiyon
 	}
 
 }
