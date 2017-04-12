@@ -1,16 +1,17 @@
 ## Recursive olarak girilen bir cumledeki harf , hece ve kelime sayisini hesaplayan program 
 
-##Problem Nedir ? 
+## Problem Nedir ? 
 Kullanıcıdan alınan bir cumlenin veya herhangi bir verinin girilen bilgiler doğrultusunda kelime , harf ve hece sayisinin recursive olarak bulunması istenmektedir. 
 
-##Veriler girilrken neler yapılmalıdır ve nelere dikkat edilmelidir ?
+## Veriler girilrken neler yapılmalıdır ve nelere dikkat edilmelidir ?
 Veriler alınırken dikkat edilmesi gereken hususlar , girilen veride ne isteniyorsa X(Kelime) , Y(Hece) veya Z(Harf) ile temsil edilmelidir.Bunlardan herhangi biri veya birkacı istenildiği gibi verilebilir. 
 
-##Her girdi her koşulda çalışır mı ?
+## Her girdi her koşulda çalışır mı ?
 Hayır. Her girdi her koşulda çalışmaz. Bazı girdiler sonsuz döngü oluşturur.
 
-##Problemin çözümü 
+## Problemin çözümü 
 **"Bu cümlede X tane kelime ve Y tane hece var." cümlesi için problemin çözümünü ele alalım.**
+
 - 1) Hangi verilerin istendiği girdi üzerinden elde edilir. Bu cümlede bizden kelime sayisi (X) ve hece sayısı (Y) isteniyor.
 - 2) Eğer girilen cümlede X(Kelime) isteniyor ise bu adıma başlanır. Aksi takdirde Y(Hece) ve Z(Harf) kontorlü yapılan diğer adımlara gecilir.
 (i)Girilen cumlede kac tane kelime olduğu hesaplanır.Hesaplanan değer, yazı dilindeki karşılığına çevirilir.Yazı diline çevirilen değer cümledeki X alanı ile yer değiştirir.
