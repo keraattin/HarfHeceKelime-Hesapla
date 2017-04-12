@@ -18,7 +18,7 @@ public class Main {
 	public static int heceHesapla(String cumle){
 		int counter = 0;
 		for (int i = 0; i < cumle.length(); i++) {
-			if(cumle.charAt(i) == 'a' || cumle.charAt(i) == 'e' || cumle.charAt(i) == 'i' || cumle.charAt(i) == 'o' ||  cumle.charAt(i) == 'u'){
+			if(cumle.charAt(i) == 'a' || cumle.charAt(i) == 'e' || cumle.charAt(i) == 'i' || cumle.charAt(i) == 'o' ||  cumle.charAt(i) == 'u' ||  cumle.charAt(i) == 'ü' ||  cumle.charAt(i) == 'ö' ||  cumle.charAt(i) == 'ı'){
 				counter++;
 			}
 		}
@@ -74,10 +74,10 @@ public class Main {
 				{
 				case 1: cumle += "bir"; break;
 				case 2: cumle += "iki"; break;
-				case 3: cumle += "uc"; break;
-				case 4: cumle += "dort"; break;
-				case 5: cumle += "bes"; break;
-				case 6: cumle += "alti"; break;
+				case 3: cumle += "üç"; break;
+				case 4: cumle += "dört"; break;
+				case 5: cumle += "beş"; break;
+				case 6: cumle += "altı"; break;
 				case 7: cumle += "yedi"; break;
 				case 8: cumle += "sekiz"; break;
 				case 9: cumle += "dokuz"; break;
